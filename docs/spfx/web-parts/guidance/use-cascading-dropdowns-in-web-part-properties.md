@@ -565,13 +565,13 @@ export default class ListItemsWebPart extends BaseClientSideWebPart<IListItemsWe
     this.context.statusRenderer.displayLoadingIndicator(this.domElement, 'options');
 
     this.loadLists()
-      .then((listOptions: IDropdownOption[]): Promise<IDropdownOption[]> => {
+      .then((listOptions: IPropertyPaneDropdownOption[]): Promise<IPropertyPaneDropdownOption[]> => {
         this.lists = listOptions;
         this.listsDropdownDisabled = false;
         this.context.propertyPane.refresh();
         return this.loadItems();
       })
-      .then((itemOptions: IDropdownOption[]): void => {
+      .then((itemOptions: IPropertyPaneDropdownOption[]): void => {
         this.items = itemOptions;
         this.itemsDropdownDisabled = !this.properties.listName;
         this.context.propertyPane.refresh();
